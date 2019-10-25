@@ -1,11 +1,36 @@
 {
-  "name": "time_tracker",
+  "name": "time-tracker",
   "version": "1.0.0",
-  "description": "time keeping app project",
+  "description": "app designed to simplify timekeeping",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smwillson/Time-tracker-app.git"
   },
   "author": "Sama Mushtaq",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smwillson/Time-tracker-app/issues"
+  },
+  "homepage": "https://github.com/smwillson/Time-tracker-app#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.1",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.2.0"
+  }
 }
