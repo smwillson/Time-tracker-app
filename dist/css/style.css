@@ -1,0 +1,373 @@
+/*=====================================================
+    Default theme: 
+-------------------------------------------------------
+    Fonts: Raleway & Open Sans
+------------------------------------------------------
+    Colors: 
+        Moon Yellow:     #F4C613
+        Grey:            #212226
+        White Smoke:     #F4F4F4
+        White:           #FFFFFF
+        Black:           #000000
+        Monza:           #d10707
+======================================================*/
+
+
+
+/*=====================================================
+                    Html, Body
+======================================================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    color: #212226;
+    font-size: 20px;
+    font-family: "Raleway", sans-serif;
+    text-rendering: optimizeLegibility;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 40px 0;
+    color: #212226;
+}
+
+input,
+textarea,
+select,
+button {
+
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    /* For legacy WebKit based browsers */
+    -moz-box-sizing: border-box;
+    /* For legacy (Firefox <29) Gecko based browsers */
+    box-sizing: border-box;
+
+
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.right {
+    float: right;
+}
+
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #212226;
+    color: #fff;
+    text-align: center;
+}
+
+/*=====================================================
+                   Required Fields
+======================================================*/
+.time-entry-required {
+    font-size: 10px;
+    color: #d10707;
+    float: right;
+}
+
+/*=====================================================
+                    Buttons
+======================================================*/
+.btn-general {
+    font-family: "Raleway", sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin: 0 6px;
+    padding: :12px 46px 12px 46px;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+.btn-time-entry {
+    border: solid #000 1px;
+    color: #fff;
+}
+
+.btn-time-entry:hover,
+.btn-time-entry:focus {
+    color: #000;
+    background-color: #F4C613;
+    border: 1px solid #F4C613;
+
+}
+
+/*=====================================================
+                    Labels
+======================================================*/
+label {
+    float: left;
+}
+
+/*=====================================================
+                    Preloader
+======================================================*/
+
+#preloader {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+#status {
+
+    background-image: url("../img/preloader/Ripple.gif");
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -35px;
+    margin-top: -35px;
+
+}
+
+/*=====================================================
+                    Header
+======================================================*/
+
+#home-header {
+    background: none;
+    height: 100%;
+}
+
+#home-header-div {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), #2d2a2a), url("../img/bg-img/hourglass.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+#home-text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+    display: inline-block;
+    text-align: center;
+}
+
+#home-text-box h1 {
+    display: inline-block;
+    text-transform: uppercase;
+    word-spacing: 5px;
+    font-weight: 300;
+    padding-bottom: 5px;
+    z-index: 1;
+    color: #f4f4f4;
+}
+
+#home-text-box a {
+    word-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+#home-text-box span {
+    color: #F4C613;
+    font-weight: 500;
+
+}
+
+/*=====================================================
+                    Header Navigation
+======================================================*/
+
+.header-main-nav {
+    float: right;
+    list-style: none;
+    word-spacing: 3px;
+}
+
+.header-main-nav li {
+    display: inline-block;
+    margin: 20px 10px;
+
+}
+
+.header-main-nav li a:link,
+.header-main-nav li a:visited {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    font-weight: 100;
+    color: #F4F4F4;
+    border-bottom: 2px solid transparent;
+    transition: border-botton 0.2s;
+    padding: 6px 0;
+}
+
+.header-main-nav li a:hover,
+.header-main-nav li a:active {
+    border-bottom: 2px solid #f4b913;
+
+}
+
+/*=====================================================
+                    Header Logo
+======================================================*/
+#logo {
+    width: auto;
+    height: 90px;
+    margin-top: 20px;
+    padding-left: 20px;
+    z-index: 10;
+}
+
+/*=====================================================
+                    Arrow Down
+======================================================*/
+#arrow-down {
+    position: absolute;
+    left: 50%;
+    top: 90%;
+    -webkit-transform: translateX(-50%) translateY(-90%);
+    transform: translateX(-50%) translateY(-90%);
+    color: #f4f4f4;
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    z-index: 1;
+}
+
+#arrow-down:hover,
+#arrow-down:focus {
+    color: #F4C613;
+}
+
+/*=====================================================
+                    Time Entry Section
+======================================================*/
+
+#main-time-entry-section {
+    background-color: #f4f4f4;
+}
+
+#task-entry-logo {
+    display: inline-block;
+    left: 3%;
+    padding: 10px 0px;
+    font-weight: 500;
+}
+
+/*=====================================================
+                    Time Entry TextArea
+======================================================*/
+textarea {
+    resize: none;
+    vertical-align: middle;
+}
+
+/*=====================================================
+                    Time Entry Input Fields
+======================================================*/
+input {
+    width: 50%;
+    border-radius: 2px;
+    float: left;
+}
+
+input[type=text]:focus {
+    border: 2px solid #F4C613;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+/*=====================================================
+                    Form
+======================================================*/
+
+.form-elements {
+    padding: 10px 30px;
+}
+
+/*=====================================================
+                    Icons
+======================================================*/
+
+.time-entry-icon {
+    padding: 10px 30px;
+    margin: 0;
+    display: inline-block;
+}
+
+.time-entry-icon i {
+    font-size: 34px;
+}
+
+.time-entry-icon span {
+    padding: 3px;
+    font-family: "Open Sans", "Arial", sans-serif;
+}
+
+.entry-item {
+    display: inline-block;
+}
+
+/*=====================================================
+                    Table
+======================================================*/
+
+.table-btn-general {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    display: none;
+}
+
+.table-btn-general:focus {
+    outline: none;
+}
+
+.table-btn-general:active {
+    transform: translateY(2px);
+}
+
+.item:hover .table-btn-general {
+    display: block;
+}
+
+
+/*=====================================================
+                    Pie Chart
+======================================================*/
+
+#piechart{
+    width: 900px;
+    height: 500px;
+}
+
+/*=====================================================
+                   Error Handling Validation
+======================================================*/
+.error-entry{
+    border: solid #d10707 3px;
+
+}

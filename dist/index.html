@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Important meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= device-width, initial-scale=1">
+    <title>Time Tracker</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon/favicon-32x32.png">
+    <!--Photo by Joshua Hoehne on Unsplash-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="vendor/css/bootstrap/bootstrap.css">
+    <!-- Custom Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <!-- fontswesome -->
+    <link rel="stylesheet" href="vendor/css/fonstawesome/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+        <!--A common character entity used in HTML is the non-breaking space: &nbsp;A non-breaking space is a space that will not break into a new line. -->
+    </div>
+
+    <!-- Header starts -->
+
+    <header id="home-header">
+        <div id="home-header-div">
+            <nav aria-label="Main Navigation" role="navigation">
+                <!-- Logo -->
+                <img src="img/logo/time_tracker_logo.png" alt="Time Tracker Logo" id="logo">
+                <!-- Menu items -->
+                <ul class="header-main-nav">
+                    <li><a href="#main-time-entry-section">Enter time</a></li>
+                    <li><a href="#">View reports</a></li>
+                </ul>
+                <div id="home-text-box" class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Time entry made <span>easy</span></h1>
+                        </div>
+                    </div>
+                </div>
+                <div id="arrow-down-div">
+                    <!-- Arrow Down -->
+                    <a href="#main-time-entry-section" id="arrow-down">
+                        <i class="fas fa-angle-down"></i>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--Header ends-->
+    <!--Main section-->
+
+    <main>
+
+        <section id="main-time-entry-section">
+            <!-- Icon for time entry -->
+            <div class="container-fluid time-entry-icon">
+                <div class="row">
+                    <div class="col-md-12">
+                        <i class="fas fa-edit"></i><span>Time Entry</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Form begins -->
+            <form id="time-entry-form">
+                <!-- Task title and date entry -->
+                <div class="form-row form-elements">
+                    <div class="col-md-6 form-group">
+                        <label class="text-label" for="time-entry-title">Task<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
+                        <input class="form-control" type="text" id="time-entry-title" placeholder="Task title" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="text-label" for="time-entry-date">Date<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
+                        <input class="form-control" type="date" id="time-entry-date" required>
+                    </div>
+                </div>
+                <!-- Task description and tags -->
+                <div class="form-row form-elements">
+                    <div class="col-md-6 form-group">
+                        <label class="text-label" for="time-entry-description">Description</label>
+                        <textarea class="form-control" id="time-entry-description" rows="4" cols="50" placeholder="A brief description of the task">
+                        </textarea>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="text-label" for="time-entry-tag">Pick Category<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
+                        <input class="form-control" list="projects" id="time-entry-tag" name="project-choice" />
+                        <datalist id="projects">
+                            <option value="Project 1">
+                            <option value="Project 2">
+                            <option value="Project 3">
+                            <option value="Project 4">
+                            <option value="Project 5">
+                            <option value="Project 6">
+                        </datalist>
+                    </div>
+                </div>
+                <!-- Duration -->
+                <div class="form-row form-elements">
+                    <div class="col-md-2 form-group">
+                        <label class="text-label" for="entry-hour-duration">Duration<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
+                        <input class="form-control" type="text" id="entry-hour-duration" placeholder="00" required>
+                        <label class="text-label" for="entry-hour-duration">hrs</label>
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <label>&nbsp;</label>
+                        <input class="form-control" type="text" id="entry-min-duration" placeholder="00" required>
+                        <label class="text-label" for="entry-min-duration">mins</label>
+                    </div>
+                </div>
+                <!-- Buttons-->
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg btn-general btn-time-entry" id="btn-submit">Submit</button>
+                        <button id="cancel" class="btn btn-primary btn-lg btn-general btn-time-entry" id="btn-cancel">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Entry item list section begins -->
+        <section>
+
+            <div class="container-fluid time-entry-icon">
+                <div class="row">
+                    <div class="col-md-12 "></div>
+                    <i class="fas fa-list-ul"></i><span>Today's Entries</span>
+                </div>
+            </div>
+            <!-- Enries Begin -->
+            <table class="table table-striped time-entries clearfix">
+                <caption>List of today's entries</caption>
+                <tbody>
+                    <tr class="item">
+                        <td>Project 1</td>
+                        <td>2.00</td>
+                        <td><span><button class="table-btn-general entry-edit-btn"><i class="fas fa-pencil-alt"></i></button></span></td>
+                        <td><span><button class="table-btn-general entry-del-btn"><i class="far fa-trash-alt"></i></button></span></td>
+                    </tr>
+                    <tr class="item">
+                        <td>Project 3</td>
+                        <td>4.00</td>
+                        <td><span><button class="table-btn-general entry-edit-btn"><i class="fas fa-pencil-alt"></i></button></span></td>
+                        <td><span><button class="table-btn-general entry-del-btn"><i class="far fa-trash-alt"></i></button></span></td>
+                    </tr>
+
+            </table>
+        </section>
+        <!-- Entry item list section ends -->
+    </main> <!-- Main time entry section ends-->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="far fa-copyright"></i><span>Time Tracker 2019</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+   
+<script type="text/javascript" src="js/bundle.js"></script><script type="text/javascript" src="js/bundle.js"></script></body>
+
+</html>
