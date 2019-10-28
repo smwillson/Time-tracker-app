@@ -25,7 +25,7 @@ const state = {};
  */
 const controlEntry = () => {
 
-    if (entryView.validateTime() && entryView.validateTitle()) {
+    if (entryView.validateForm()) {
 
         //if all the user entries are valid create a new time entry object
 

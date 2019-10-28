@@ -35,15 +35,6 @@ const removeErrorClass = (field) => {
     field.classList.remove("error-entry");
 };
 
-//form validation
-
-
-export const validateForm = () => {
-    //This method will perform overall form validation with the help of other helper functions
-    validateTime();
-
-
-};
 
 const getIntValue = (value) => Number(value);
 
@@ -63,7 +54,7 @@ const setDate = (field) => {
 
 const getValue = (field) => field.value;
 
-export const validateTime = () => {
+const validateTime = () => {
 
     let hours = 0, minutes = 0;
 
@@ -152,7 +143,19 @@ export const validateTime = () => {
     return true;
 };
 
+//Do validations for the title 
+const validateTitle = () => {
+    //Title should not be null
+    if (getValue(elements.title) === '') {
+        addErrorClass(elements.title);
+        return false;
+
+    } else {
+        removeErrorClass(elements.title);
+    }
+    return true;
+}
 
 
 
-
+export const validateForm =()=>(validateTitle()&& validateTime());
