@@ -156,6 +156,23 @@ const validateTitle = () => {
     return true;
 }
 
+const validateDataListInput = () => {
+    if (getValue(elements.category) !== '') {
 
+        const dataListOptionsArray = [], dataOptions = elements.categoryOptions;
+        for (let index = 0; index < dataOptions.options.length; index++) {
+            dataListOptionsArray.push(dataOptions.options[index].value);
 
-export const validateForm =()=>(validateTitle()&& validateTime());
+        }
+       if(!dataListOptionsArray.includes(getValue(elements.category))){
+           addErrorClass(elements.category);
+       }else{
+           removeErrorClass(elements.category);
+       }
+    }else{
+        addErrorClass(elements.category);
+    }
+
+}
+
+export const validateForm = () => (validateTitle()  && validateDataListInput() && validateTime());
