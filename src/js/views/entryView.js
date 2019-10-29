@@ -14,8 +14,15 @@ export const getDesc = () => elements.description.value;
 
 export const getCategory = () => elements.category.value;
 
-export const getTime = () => convertToMinutes(getIntValue(getValue(elements.hours)), getIntValue(getValue(elements.minutes)));
+export const getHours = () => getIntValue(getValue(elements.hours));
 
+export const getMinutes = () => getIntValue(getValue(elements.minutes));
+
+export const getTime = () => convertToMinutes(getHours(), getMinutes());
+
+//error class
+
+const errorClass = "error-entry";
 
 //function to clear the form 
 
@@ -26,13 +33,14 @@ export const clearForm = () => {
 // function to add the CSS error class
 
 const addErrorClass = (field) => {
-    field.classList.add("error-entry");
+    field.classList.add(errorClass);
 };
 
 // function to remove the CSS error class
 
 const removeErrorClass = (field) => {
-    field.classList.remove("error-entry");
+    field.classList.remove(errorClass);
+
 };
 
 
@@ -54,91 +62,21 @@ const setDate = (field) => {
 
 const getValue = (field) => field.value;
 
-const validateTime = () => {
+const validateTime = (field, value, type) => {
+    let rangeMax = 0;
+    //for hours range is 0-24 and for minutes range is 0-59
+    (type === 'hours') ? rangeMax = 24 : rangeMax = 59;
 
-    let hours = 0, minutes = 0;
-
-    // Time cant be not a number
-    if (isNaN(getIntValue(getValue(elements.hours))) || isNaN(getIntValue(getValue(elements.minutes)))) {
-
-        if (isNaN(getIntValue(getValue(elements.hours)))) {
-            addErrorClass(elements.hours);
-        } else {
-            removeErrorClass(elements.hours);
+    //if its a valid input
+    if (value !== '' && !isNaN(value) && value >= 0 && value <= rangeMax && Number.isInteger(value)) {
+        if (field.classList.contains(errorClass)) {
+            removeErrorClass(field);
         }
 
-        if (isNaN(getIntValue(getValue(elements.minutes)))) {
-            addErrorClass(elements.minutes);
-        } else {
-            removeErrorClass(elements.minutes);
-        }
-
+    } else {
+        addErrorClass(field);
         return false;
     }
-    else {
-        hours = getIntValue(getValue(elements.hours));
-        minutes = getIntValue(getValue(elements.minutes));
-    }
-
-    // Time cant be empty
-    if (getValue(elements.hours) === '' || getValue(elements.minutes) === '') {
-
-        if (getValue(elements.hours) === '') {
-            addErrorClass(elements.hours);
-        } else {
-            removeErrorClass(elements.hours);
-        }
-
-        if (getValue(elements.minutes) === '') {
-            addErrorClass(elements.minutes);
-        } else {
-            removeErrorClass(elements.minutes);
-        }
-
-        return false;
-
-    }
-
-    //Time has to be within a limit
-    if ((hours > 24 || hours < 0) || (minutes > 59 || minutes < 0)) {
-
-        if (hours > 24 || hours < 0) {
-            addErrorClass(elements.hours);
-        } else {
-            removeErrorClass(elements.hours);
-        }
-
-        if (minutes > 59 || minutes < 0) {
-            addErrorClass(elements.minutes);
-        }
-        else {
-            removeErrorClass(elements.minutes);
-        }
-
-        return false;
-    }
-
-    //Time cant be a decimal number
-    if (!Number.isInteger(hours) || !Number.isInteger(minutes)) {
-
-        if (!Number.isInteger(hours)) {
-            addErrorClass(elements.hours);
-        } else {
-            removeErrorClass(elements.hours);
-        }
-
-        if (!Number.isInteger(minutes)) {
-            addErrorClass(elements.minutes);
-        }
-        else {
-            removeErrorClass(elements.minutes);
-        }
-
-        return false;
-
-    }
-    removeErrorClass(elements.hours);
-    removeErrorClass(elements.minutes);
 
     return true;
 };
@@ -151,28 +89,48 @@ const validateTitle = () => {
         return false;
 
     } else {
-        removeErrorClass(elements.title);
+        if (elements.title.classList.contains(errorClass)) {
+            removeErrorClass(elements.title);
+        }
     }
     return true;
 }
 
 const validateDataListInput = () => {
-    if (getValue(elements.category) !== '') {
 
-        const dataListOptionsArray = [], dataOptions = elements.categoryOptions;
-        for (let index = 0; index < dataOptions.options.length; index++) {
-            dataListOptionsArray.push(dataOptions.options[index].value);
-
+    //check the datalist entry is not null
+    if (getValue(elements.category) !== '' && matchUserInput(elements.categoryOptions)) {
+        if (elements.category.classList.contains(errorClass)) {
+            removeErrorClass(elements.category);
         }
-       if(!dataListOptionsArray.includes(getValue(elements.category))){
-           addErrorClass(elements.category);
-       }else{
-           removeErrorClass(elements.category);
-       }
-    }else{
+    } else {
         addErrorClass(elements.category);
+        return false;
     }
+    return true;
+};
 
-}
+// for datalist validation
+const matchUserInput = (elem) => {
+    const dataListOptionsArray = [], dataOptions = elem;
+    //create an array of all the option in the drop-down list
+    for (let index = 0; index < dataOptions.options.length; index++) {
 
-export const validateForm = () => (validateTitle()  && validateDataListInput() && validateTime());
+        dataListOptionsArray.push(dataOptions.options[index].value);
+
+    }
+    //if user inputs something, make sure that it matches our drop down options
+    if (!dataListOptionsArray.includes(getValue(elements.category))) {
+
+        return false;
+    }
+    return true;
+
+};
+
+// do validations on all required form fields
+
+export const validateForm = () => (validateTitle()
+    && validateDataListInput()
+    && validateTime(elements.hours, getHours(elements.hours), elements.hours.id.split('-')[2])
+    && validateTime(elements.minutes, getMinutes(elements.minutes), elements.minutes.id.split('-')[2]));
