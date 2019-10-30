@@ -14,11 +14,15 @@ export const getDesc = () => elements.description.value;
 
 export const getCategory = () => elements.category.value;
 
-export const getHours = () => getIntValue(getValue(elements.hours));
-
-export const getMinutes = () => getIntValue(getValue(elements.minutes));
-
 export const getTime = () => convertToMinutes(getHours(), getMinutes());
+
+const getHours = () => getIntValue(getValue(elements.hours));
+
+const getMinutes = () => getIntValue(getValue(elements.minutes));
+
+const getValue = (field) => field.value;
+
+const getIntValue = (value) => Number(value);
 
 //error class
 
@@ -43,10 +47,6 @@ const removeErrorClass = (field) => {
 
 };
 
-
-const getIntValue = (value) => Number(value);
-
-
 const clearTextField = (field) => {
     //clear the text content of the given field
     field.textContent = '';
@@ -59,9 +59,7 @@ const setDate = (field) => {
     field.textContent = `${today.getMonth()}/${today.getDate()}/${today.getFullYear()}`;
 
 }
-
-const getValue = (field) => field.value;
-
+//validation for time fields(hours and minutes)
 const validateTime = (field, value, type) => {
     let rangeMax = 0;
     //for hours range is 0-24 and for minutes range is 0-59
@@ -134,3 +132,26 @@ export const validateForm = () => (validateTitle()
     && validateDataListInput()
     && validateTime(elements.hours, getHours(elements.hours), elements.hours.id.split('-')[2])
     && validateTime(elements.minutes, getMinutes(elements.minutes), elements.minutes.id.split('-')[2]));
+
+
+//create the markup that will be inserted
+export const createEntry = (id, title, time) => {
+    const markup = 
+    `<tr class="item" id=${id}>
+        <td>${title}</td>
+        <td>${time}</td>
+        <td><span><button class="table-btn-general entry-edit-btn"><i class="fas fa-pencil-alt" id="btn-edit-${id}"></i></button></span></td>
+        <td><span><button class="table-btn-general entry-del-btn"><i class="far fa-trash-alt" id="btn-del-${id}"></i></button></span></td>
+    </tr>`;
+
+    //now add the entry to the DOM
+    elements.entriesTable.insertAdjacentHTML('beforeend', markup);
+};
+
+//delete item from the UI
+export const deleteEntry = id =>{
+    const el = document.querySelector('.item').parentNode;
+    if(el){
+        el.parentElement.removeChild(id);
+    }
+};
