@@ -7,6 +7,8 @@ export const elements = {
     categoryOptions:document.getElementById('projects'),
     hours: document.querySelector('#time-entry-hour'),
     minutes: document.querySelector('#time-entry-mins'),
+    table: document.querySelector('#entry-table'),
+    entriesTable : document.querySelector('#daily_item_entries'),
     submitBtn: document.querySelector('#btn-submit'),
     cancelBtn: document.querySelector('#btn-cancel')
 };
