@@ -13,10 +13,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="vendor/css/bootstrap/bootstrap.css">
     <!-- Custom Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
     <!-- fontswesome -->
     <link rel="stylesheet" href="vendor/css/fonstawesome/css/all.min.css">
+    <!-- google charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -75,11 +78,13 @@
                 <!-- Task title and date entry -->
                 <div class="form-row form-elements">
                     <div class="col-md-6 form-group">
-                        <label class="text-label" for="time-entry-title">Task<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
+                        <label class="text-label" for="time-entry-title">Task<span class="time-entry-required"><i
+                                    class="fas fa-asterisk"></i></span></label>
                         <input class="form-control" type="text" id="time-entry-title" placeholder="Task title" required>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label class="text-label" for="time-entry-date">Date<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
+                        <label class="text-label" for="time-entry-date">Date<span class="time-entry-required"><i
+                                    class="fas fa-asterisk"></i></span></label>
                         <input class="form-control" type="text" id="time-entry-date" placeholder="mm/dd/yyyy" required>
                     </div>
                 </div>
@@ -87,11 +92,13 @@
                 <div class="form-row form-elements">
                     <div class="col-md-6 form-group">
                         <label class="text-label" for="time-entry-description">Description</label>
-                        <textarea class="form-control" id="time-entry-description" rows="2" cols="50" wrap="physical"  placeholder="A brief description of the task"></textarea>
+                        <textarea class="form-control" id="time-entry-description" rows="2" cols="50" wrap="physical"
+                            placeholder="A brief description of the task"></textarea>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label class="text-label" for="time-entry-tag">Pick Category<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
-                        <input class="form-control" list="projects" id="time-entry-tag" name="projects" required/>
+                        <label class="text-label" for="time-entry-tag">Pick Category<span class="time-entry-required"><i
+                                    class="fas fa-asterisk"></i></span></label>
+                        <input class="form-control" list="projects" id="time-entry-tag" name="projects" required />
                         <datalist id="projects">
                             <option value="Project 1">
                             <option value="Project 2">
@@ -105,7 +112,8 @@
                 <!-- Duration -->
                 <div class="form-row form-elements">
                     <div class="col-md-2 form-group">
-                        <label class="text-label" for="time-entry-hour">Duration<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
+                        <label class="text-label" for="time-entry-hour">Duration<span class="time-entry-required"><i
+                                    class="fas fa-asterisk"></i></span></label>
                         <input class="form-control" type="text" id="time-entry-hour" placeholder="0-24" required>
                         <label class="text-label" for="time-entry-hour">hrs</label>
                     </div>
@@ -118,8 +126,10 @@
                 <!-- Buttons-->
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary btn-lg btn-general btn-time-entry" id="btn-submit">Submit</button>
-                        <button id="cancel" class="btn btn-primary btn-lg btn-general btn-time-entry" id="btn-cancel">Cancel</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-general btn-time-entry"
+                            id="btn-submit">Submit</button>
+                        <button id="cancel" class="btn btn-primary btn-lg btn-general btn-time-entry"
+                            id="btn-cancel">Cancel</button>
                     </div>
                 </div>
             </form>
@@ -138,7 +148,7 @@
             <table class="table table-striped time-entries clearfix" id="entry-table">
                 <caption>List of today's entries</caption>
                 <tbody id="daily_item_entries">
-                  <!--  <tr class="item">
+                    <!--  <tr class="item">
                         <td>Project 1</td>
                         <td>2.00</td>
                         <td><span><button class="table-btn-general entry-edit-btn"><i class="fas fa-pencil-alt"></i></button></span></td>
@@ -156,7 +166,16 @@
         <!-- Entry item list section ends -->
     </main> <!-- Main time entry section ends-->
     <!--The report will load here-->
-    <div id="piechart"></div>
+    <section id="daily-report-section">
+        <div class="container-fluid time-entry-icon" id="piechart_3d">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fas fa-chart-bar"></i><span>Daily Report</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container-fluid">
@@ -167,6 +186,7 @@
             </div>
         </div>
     </footer>
-   
-<!-- -->
+
+    <!-- -->
+
 </html>
