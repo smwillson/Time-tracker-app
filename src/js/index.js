@@ -1,6 +1,8 @@
 import Entry from './models/Entry';
 import { elements } from './views/common';
 import * as entryView from './views/entryView';
+import * as chartView from './views/chartView';
+import Chart from './models/Chart';
 
 var $ = require("jquery");
 
@@ -41,11 +43,24 @@ const controlEntry = () => {
             entryView.getTime());
 
         //update the UI
-        state.dailyEntries.entries.forEach(entry => {          
+        state.dailyEntries.entries.forEach(entry => {
             entryView.createEntry(entry.id, entry.title, entry.duration)
         });
-        //entryView.createEntry(newEntry);
+        //now display the pie chart
+        if (!elements.pieChart.display === 'block') {
+            chartView.displayPieChart();
+        }
 
+        //create data for the pie chart
+        const tableData = controlChart(state.dailyEntries.entries);
+
+        console.log(tableData);
+
+        //render the pie chart with the values now
+        chartView.renderPieChart(tableData);
+
+//TEST
+window.e= state.dailyEntries;
         //clear the fields
         entryView.clearForm();
     }
@@ -74,7 +89,28 @@ elements.table.addEventListener('click', event => {
     //now remove it from the state
     state.dailyEntries.entries.deleteEntry(id);
 
+    //if all the entries have been removed , then hide the piechart element
+    if (!state.dailyEntries.length > 0) {
+        chartView.hidePieChart();
+    }
+
 });
 
 
 //window.e = state.Entry;
+
+/**
+ * Chart controller
+ */
+
+const controlChart = (data) => {
+
+    if (!state.chart) {
+        state.chart = new Chart();
+    }
+ state.chart.chartData = state.chart.groupBy(data);
+
+ //TEST
+ window.c = state.chart;
+return state.chart.chartData;
+}
