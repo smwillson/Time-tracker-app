@@ -6,7 +6,7 @@ export default class Entry {
     }
 
     //to add a new entry to our data storage
-    addNewEntry(title, date, desc='', category, duration) {
+    addNewEntry(title, date, desc = '', category, duration) {
         const entry = {
             id: uniqid(),
             title,
