@@ -64,9 +64,9 @@ const validateTime = (field, value, type) => {
     let rangeMax = 0;
     //for hours range is 0-24 and for minutes range is 0-59
     (type === 'hours') ? rangeMax = 24 : rangeMax = 59;
-
+    
     //if its a valid input
-    if (value !== '' && !isNaN(value) && value >= 0 && value <= rangeMax && Number.isInteger(value)) {
+    if ((field.value !== '') && (!isNaN(value)) && (value >= 0 && value <= rangeMax) && (Number.isInteger(value))) {
         if (field.classList.contains(errorClass)) {
             removeErrorClass(field);
         }
@@ -136,8 +136,8 @@ export const validateForm = () => (validateTitle()
 
 //create the markup that will be inserted
 export const createEntry = (id, title, time) => {
-    const markup = 
-    `<tr class="item" id=${id}>
+    const markup =
+        `<tr class="item" id=${id}>
         <td>${title}</td>
         <td>${time}</td>
         <td><span><button class="table-btn-general entry-edit-btn"><i class="fas fa-pencil-alt" id="btn-edit-${id}"></i></button></span></td>
@@ -149,9 +149,14 @@ export const createEntry = (id, title, time) => {
 };
 
 //delete item from the UI
-export const deleteEntry = id =>{
+export const deleteEntry = id => {
     const el = document.querySelector('.item').parentNode;
-    if(el){
+    if (el) {
         el.parentElement.removeChild(id);
     }
 };
+
+//delete all items from the UI
+export const delAllEntries = id => {
+    id.innerHTML = "";
+}
