@@ -27,15 +27,15 @@ const state = {};
  */
 const controlEntry = () => {
 
-    if (!state.dailyEntries) {
+    if (!state.entry) {
         //add new entry object to the state
-        state.dailyEntries = new Entry();
+        state.entry = new Entry();
     }
     //create a new entry
     if (entryView.validateForm()) {
 
         //Create a new entry and add it to our global state
-        state.dailyEntries.addNewEntry(
+        state.entry.addNewEntry(
             entryView.getTitle(),
             entryView.getDate(),
             entryView.getDesc(),
@@ -43,31 +43,32 @@ const controlEntry = () => {
             entryView.getTime());
 
         //update the UI
-        state.dailyEntries.entries.forEach(entry => {
+        //first clear any previous entries 
+        entryView.delAllEntries(elements.entriesTable);
+
+        //Now re-render all the entries
+        state.entry.entries.forEach(entry => {
             entryView.createEntry(entry.id, entry.title, entry.duration)
         });
         //now display the pie chart
-        if (!elements.pieChart.display === 'block') {
+        if (elements.reportSection.style.display !== 'block') {
             chartView.displayPieChart();
         }
 
-        //create data for the pie chart
-        const tableData = controlChart(state.dailyEntries.entries);
-
-        console.log(tableData);
-
         //render the pie chart with the values now
-        chartView.renderPieChart(tableData);
+        chartView.renderPieChart(controlChart(state.entry.entries));
 
-//TEST
-window.e= state.dailyEntries;
+        //TEST
+        window.e = state.entry;
         //clear the fields
         entryView.clearForm();
     }
 };
 
 
-//Setting up event listeners
+/**
+ * Event Handlers
+ */
 
 //element handler for form submission
 elements.submitBtn.addEventListener('click', e => {
@@ -78,8 +79,8 @@ elements.submitBtn.addEventListener('click', e => {
 
 //Event handler for deletion
 elements.table.addEventListener('click', event => {
+    const elementID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
-    const id = event.target.parentNode.parentNode.parentNode.parentNode.id;
     //remove the entry from the UI
     if (event.target.matches('.entry-del-btn , .entry-del-btn *')) {
         const rowNum = event.target.parentNode.parentNode.parentNode.parentNode.rowIndex;
@@ -87,11 +88,14 @@ elements.table.addEventListener('click', event => {
     }
 
     //now remove it from the state
-    state.dailyEntries.entries.deleteEntry(id);
+    state.entry.deleteEntry(elementID);
 
     //if all the entries have been removed , then hide the piechart element
-    if (!state.dailyEntries.length > 0) {
+    if (!state.entry.entries.length > 0) {
         chartView.hidePieChart();
+    } else {
+        //render the pie chart with the new values now
+        chartView.renderPieChart(controlChart(state.entry.entries));
     }
 
 });
@@ -108,9 +112,9 @@ const controlChart = (data) => {
     if (!state.chart) {
         state.chart = new Chart();
     }
- state.chart.chartData = state.chart.groupBy(data);
+    state.chart.chartData = state.chart.groupBy(data);
 
- //TEST
- window.c = state.chart;
-return state.chart.chartData;
+    //TEST
+    window.c = state.chart;
+    return state.chart.chartData;
 }
