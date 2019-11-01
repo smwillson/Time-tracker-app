@@ -21,8 +21,17 @@ export default class Entry {
 
     //to delete a new entry from our data storage
     deleteEntry(id) {
-        const index = this.entries.findIndex(el => el.id === id);
-        this.entries.splice(index, 1);
+
+        let arrayIndex;
+
+        this.entries.forEach((cur, index) => {
+            if (cur.id === id) {
+                arrayIndex = index;
+            }
+        });
+
+        // const index = this.entries.findIndex(el => el.id === id);
+        this.entries.splice(arrayIndex, 1);
 
     }
 
