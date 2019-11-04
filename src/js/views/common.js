@@ -12,5 +12,9 @@ export const elements = {
     submitBtn: document.querySelector('#btn-submit'),
     cancelBtn: document.querySelector('#btn-cancel'),
     pieChart: document.querySelector('#piechart_3d'),
-    reportSection: document.querySelector('#daily-report-section')
+    reportSection: document.querySelector('#daily-report-section'),
+    temperature: document.querySelector('#todays-weather'),
+    weatherButton: document.querySelector('#weather-btn'),
+    weatherChkBox: document.querySelector('#temptype')
 };
+
