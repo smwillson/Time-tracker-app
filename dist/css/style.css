@@ -95,7 +95,7 @@ footer {
 }
 
 .btn-time-entry {
-    border: solid #000 1px;
+    border: solid #000 1px solid ;
     color: #fff;
 }
 
@@ -103,7 +103,7 @@ footer {
 .btn-time-entry:focus {
     color: #000;
     background-color: #F4C613;
-    border: 1px solid #F4C613;
+    border: 1px solid  solid #F4C613;
 
 }
 
@@ -330,6 +330,13 @@ input[type=text]:focus {
 /*=====================================================
                     Table
 ======================================================*/
+#entry-table tr:hover {
+    background-color: #ddd;
+}
+
+#entry-table td{
+     padding: 8px;
+}
 
 .table-btn-general {
     font-size: 22px;
@@ -376,4 +383,53 @@ input[type=text]:focus {
 .error-entry{
     border: solid #d10707 3px;
 
+}
+
+/*=====================================================
+                 Temperature 
+======================================================*/
+#daily-weather{
+    border: 1px solid #212226 ;
+    
+}
+#main-weather-div{
+    padding-top: 10px;
+}
+.weather{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.weather-display{
+    left: 30%;
+    padding: 20px 30px;
+}
+
+#curr-temp{
+    padding: 10px;
+}
+
+#weather-btn{
+    color: #000;
+}
+
+#weather{
+    display: inline;
+    align-content: center;
+    padding: 30px 50px;
+}
+
+
+[type="checkbox"]{
+    vertical-align: middle;
+    float: none;
+    width: auto;
+}
+
+#weather-lbl{
+    float: none;
+    padding: 0 30px;
 }
