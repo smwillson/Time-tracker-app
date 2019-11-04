@@ -63,7 +63,42 @@
     <!--Main section-->
 
     <main>
-
+        <!--Weather section-->
+        <section id="daily-weather">
+            <div><i class="fas fa-temperature-high time-entry-icon"></i><span>Today's weather</span></div>
+            <div id="weather">
+                <span>
+                    <label id="weather-lbl"><input type="checkbox" id="temptype" name="temptype" checked />&deg;C</label>
+                    <button type="button" class="btn-time-entry btn-general" id="weather-btn">Get Latest Weather</button>
+                </span>
+            </div>
+            <div class="container-fluid" id="main-weather-div">
+                <div class="row" id="todays-weather">
+                    <!--   <div class="col-md-6 weather shadow">
+                        <div id="weather-icon"><svg></svg></div>
+                        <label>CURRENTLY&nbsp;&nbsp;&nbsp;<strong id="current-temp">16&deg;</strong></label>
+                    </div>
+                    <div class="col-md-6 weather shadow">
+                        <div class="weather-display">
+                            <span>
+                                <label>LOW &nbsp;&nbsp;<strong id="min-temp">12&deg;</strong></label>
+                                <label>&nbsp;&nbsp;&nbsp;<i class="fas fa-caret-right"></i></label>
+                                <label>&nbsp;&nbsp;HIGH &nbsp;&nbsp;<strong id="max-temp">24&deg;</strong></label>
+                            </span>
+                            <div>
+                                <i class="fas fa-umbrella"></i>&nbsp;&nbsp;&nbsp;<span>PRECIPITATION&nbsp;
+                                    <strong id="precipitation">0%</strong></span>
+                            </div>
+                            <div>
+                                <i class="fas fa-wind"></i> &nbsp;&nbsp;&nbsp;<span>WIND SPEED&nbsp;
+                                    <strong id="wind-dir">SW</strong> at <strong id="wind-speed">10MPH</strong></span>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <!--Weather section ends-->
         <section id="main-time-entry-section">
             <!-- Icon for time entry -->
             <div class="container-fluid time-entry-icon">
@@ -160,17 +195,17 @@
                         <td><span><button class="table-btn-general entry-edit-btn"><i class="fas fa-pencil-alt"></i></button></span></td>
                         <td><span><button class="table-btn-general entry-del-btn"><i class="far fa-trash-alt"></i></button></span></td>
                     </tr> -->
-
+                </tbody>
             </table>
         </section>
         <!-- Entry item list section ends -->
     </main> <!-- Main time entry section ends-->
     <!--The report will load here-->
     <section id="daily-report-section">
-        <div class="container-fluid time-entry-icon" id="piechart_3d">
+        <i class="fas fa-chart-bar time-entry-icon"></i><span>Daily Report</span>
+        <div class="container-fluid" id="piechart_3d">
             <div class="row">
                 <div class="col-md-12">
-                    <i class="fas fa-chart-bar"></i><span>Daily Report</span>
                 </div>
             </div>
         </div>

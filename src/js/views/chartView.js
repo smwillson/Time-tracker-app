@@ -3,11 +3,11 @@ import {
 } from './common';
 
 export const displayPieChart = () => {
-    elements.reportSection.display = 'block';
+    elements.reportSection.style.display = 'block';
 };
 
 export const hidePieChart = () => {
-    elements.reportSection.display = 'none';
+    elements.reportSection.style.display = 'none';
 };
 
 export const renderPieChart = (tableData) =>{
