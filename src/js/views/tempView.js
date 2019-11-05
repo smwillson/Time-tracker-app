@@ -8,7 +8,7 @@ export const renderTemp = (cur, min, max, humidity, winsp, windir, abbr) => {
                         <div id="weather-icon"><img src="https://www.metaweather.com/static/img/weather/${abbr}.svg"></img></div>
                         <label>CURRENTLY&nbsp;&nbsp;&nbsp;<strong id="current-temp" class="temp">${(cur === null) ? cur = '--' : cur}&deg;</strong></label>
                     </div>
-                    <div class="col-md-6 weather shadow">
+                    <div class="col-md-6 weather shadow-lg">
                         <div class="weather-display">
                             <span>
                                 <label>LOW &nbsp;&nbsp;<strong id="min-temp" class="temp">${(min === null) ? min = '--' : min}&deg;</strong></label>
@@ -32,6 +32,7 @@ export const toggleCheckBox = (state) => {
     elements.weatherChkBox.disabled = state;
 }
 
+//convert from C->F and vice versa
 export const convertTempType = (temp, type) => {
     temp = parseInt(temp, 10);
     let newTemp;
@@ -41,4 +42,13 @@ export const convertTempType = (temp, type) => {
         newTemp = (temp - 32) * 5 / 9;
     }
     return Math.round(newTemp);
+}
+
+//update the UI to display temp type change
+export const updateTemps = (nodelst, temptype) =>{
+
+    Array.from(nodelst).forEach(field => {
+        field.innerHTML = convertTempType(field.innerText, temptype) +`&deg;`;
+        
+    });
 }
