@@ -429,6 +429,7 @@ input[type=text]:focus {
     width: auto;
 }
 
+
 #weather-lbl{
     float: none;
     padding: 0 30px;
