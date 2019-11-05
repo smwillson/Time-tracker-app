@@ -8,6 +8,7 @@ import Temperature from './models/Temperature';
 
 
 
+
 var $ = require("jquery");
 
 /*=====================================================
@@ -155,17 +156,37 @@ const controlTemp = () => {
         //Now render them on the UI
         tempView.renderTemp(
             state.temperature.cur,
-            Math.floor(state.temperature.min),
-            Math.floor(state.temperature.max),
+            Math.round(state.temperature.min),
+            Math.round(state.temperature.max),
             state.temperature.humidity,
-            Math.floor(state.temperature.wspeed),
+            Math.round(state.temperature.wspeed),
             state.temperature.wdir,
             state.temperature.wabbrv);
     });
 
+    //Default temp is Celsius
+    state.temperature.temptype = 'C';
+    //Now enable checkbox
+    tempView.toggleCheckBox(false);
 
 }
 
 
 //Event handler to get weather
 elements.weatherButton.addEventListener('click', controlTemp);
+
+
+//Event Listener for checkbox
+elements.weatherChkBox.addEventListener('change', event => {
+    if (!event.target.checked) {
+        state.temperature.temptype = 'F';
+    } else {
+        state.temperature.temptype = 'C';
+    }
+    //Now update the UI
+    Array.from(document.querySelectorAll(".temp")).forEach(field => {
+        field.innerHTML = tempView.convertTempType(field.innerText, state.temperature.temptype) +`&deg;`;
+        
+    });
+
+});
