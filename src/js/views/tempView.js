@@ -26,15 +26,14 @@ export const renderTemp = (cur, min, max, humidity, winsp, windir, abbr) => {
                         </div>
     </div>`
     elements.temperature.insertAdjacentHTML('beforeend', markup);
-}
+};
 
 export const toggleCheckBox = (state) => {
     elements.weatherChkBox.disabled = state;
-}
+};
 
 //convert from C->F and vice versa
-export const convertTempType = (temp, type) => {
-    temp = parseInt(temp, 10);
+ const convertTempType = (temp, type) => {
     let newTemp;
     if (type === 'F') {
         newTemp = (temp * 9 / 5) + 32;
@@ -42,12 +41,22 @@ export const convertTempType = (temp, type) => {
         newTemp = (temp - 32) * 5 / 9;
     }
     return Math.round(newTemp);
-}
+};
 
 //update the UI to display temp type change
 export const updateTemps = temptype => {
     Array.from(document.querySelectorAll(".temp")).forEach(field => {
-        field.innerHTML = convertTempType(field.innerText, temptype) + `&deg;`;
+        field.innerHTML = convertTempType(parseInt(field.innerText, 10), temptype) + `&deg;`;
 
     });
-}
+};
+
+//clear all temperature data from the UI
+export const clearTemp = () => {
+    elements.temperature.innerHTML = '';
+};
+
+//set box to checked
+export const setBoxChecked = (state) =>{
+    elements.weatherChkBox.checked = state;
+};
