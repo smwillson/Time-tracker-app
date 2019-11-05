@@ -65,7 +65,7 @@
     <main>
         <!--Weather section-->
         <section id="daily-weather">
-            <div><i class="fas fa-temperature-high time-entry-icon"></i><span>Today's weather</span></div>
+            <div id="weather-icon"><i class="fas fa-temperature-high general-icon"></i><span>Today's weather</span></div>
             <div id="weather">
                 <span>
                     <label id="weather-lbl"><input type="checkbox" disabled="disabled" id="temptype" name="temptype"
@@ -204,15 +204,9 @@
     </main> <!-- Main time entry section ends-->
     <!--The report will load here-->
     <section id="daily-report-section">
-        <i class="fas fa-chart-bar time-entry-icon"></i><span>Daily Report</span>
-        <div class="container-fluid" id="piechart_3d">
-            <div class="row">
-                <div class="col-md-12">
-                </div>
-            </div>
-        </div>
+        <i class="fas fa-chart-bar general-icon"></i><span>Daily Report</span>
+         <div id="piechart_3d"></div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="container-fluid">
