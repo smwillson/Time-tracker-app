@@ -45,10 +45,9 @@ export const convertTempType = (temp, type) => {
 }
 
 //update the UI to display temp type change
-export const updateTemps = (nodelst, temptype) =>{
+export const updateTemps = temptype => {
+    Array.from(document.querySelectorAll(".temp")).forEach(field => {
+        field.innerHTML = convertTempType(field.innerText, temptype) + `&deg;`;
 
-    Array.from(nodelst).forEach(field => {
-        field.innerHTML = convertTempType(field.innerText, temptype) +`&deg;`;
-        
     });
 }
