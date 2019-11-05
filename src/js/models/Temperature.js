@@ -1,6 +1,6 @@
 export default class Temperature {
 
-    constructor(cur = 0, max = 0, min = 0, humidity = 0, wspeed = 0, wdir = '', wabbrv = '') {
+    constructor(cur = 0, max = 0, min = 0, humidity = 0, wspeed = 0, wdir = '', wabbrv = '', temptype = 'C') {
         this.cur = cur;
         this.max = max;
         this.min = min;
@@ -8,6 +8,7 @@ export default class Temperature {
         this.wspeed = wspeed;
         this.wdir = wdir;
         this.wabbrv = wabbrv;
+        this.temptype = temptype;
     }
     async getWeather() {
         try {
@@ -20,9 +21,4 @@ export default class Temperature {
             console.log(error);
         }
     }
-    convertToFahrenheit(temp) {
-        return (temp * 9 / 5) + 32;
-
-    }
-
 }
