@@ -13,14 +13,14 @@ export default class Chart {
     groupBy(data) {
         const result = [];
 
-        data.reduce(function (res, value) {
+        data.reduce((res, value) => {
             if (!res[value.category]) {
                 res[value.category] = { category: value.category, duration: 0 };
                 result.push(res[value.category])
             }
             res[value.category].duration += value.duration;
             return res;
-        }, {})
+        }, {});
 
         return this.objectToArray(result);
     };
