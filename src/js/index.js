@@ -18,11 +18,20 @@ var $ = require("jquery");
 $(window).on('load', function () {
 
     $('#preloader').delay(600).fadeOut('slow');
-
-
+    //set the date manually(for now)
+    //TODO: add dynamic ability
+    entryView.setDate();
 });
 
-//Global state object: this will contain all the valid data input by the user
+
+/**
+ * Global state object: 
+ * the valid data input by the user
+ * chart data 
+ * current temp
+ */
+
+
 
 const state = {};
 
@@ -33,8 +42,6 @@ const state = {};
  * 
  */
 const controlEntry = () => {
-
-
 
     if (!state.entry) {
         //add new entry object to the state
@@ -68,8 +75,6 @@ const controlEntry = () => {
         //render the pie chart with the values now
         chartView.renderPieChart(controlChart(state.entry.entries));
 
-        //TEST
-        window.e = state.entry;
         //clear the fields
         entryView.clearForm();
     }
@@ -151,7 +156,7 @@ const controlTemp = () => {
         state.temperature.wabbrv = tempData.weather_state_abbr;
 
         //if there is temperature data already present on the UI clear it first
-        elements.temperature.innerHTML = '';
+        tempView.clearTemp();
 
         //Now render them on the UI
         tempView.renderTemp(
@@ -166,8 +171,13 @@ const controlTemp = () => {
 
     //Default temp is Celsius
     state.temperature.temptype = 'C';
+
     //Now enable checkbox
     tempView.toggleCheckBox(false);
+
+    //if the user clicks the buttons again, check the checkbox(if checkbox is enabled)
+    tempView.setBoxChecked(true);
+
 
 }
 
@@ -185,5 +195,6 @@ elements.weatherChkBox.addEventListener('change', event => {
     }
     //Now update the UI
     tempView.updateTemps(state.temperature.temptype);
-   
+
 });
+
