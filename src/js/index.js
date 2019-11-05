@@ -184,6 +184,6 @@ elements.weatherChkBox.addEventListener('change', event => {
         state.temperature.temptype = 'C';
     }
     //Now update the UI
-    tempView.updateTemps(document.querySelectorAll(".temp"), state.temperature.temptype);
+    tempView.updateTemps(state.temperature.temptype);
    
 });
