@@ -155,7 +155,7 @@ const controlTemp = () => {
 
         //Now render them on the UI
         tempView.renderTemp(
-            state.temperature.cur,
+            Math.round(state.temperature.cur),
             Math.round(state.temperature.min),
             Math.round(state.temperature.max),
             state.temperature.humidity,
@@ -184,9 +184,6 @@ elements.weatherChkBox.addEventListener('change', event => {
         state.temperature.temptype = 'C';
     }
     //Now update the UI
-    Array.from(document.querySelectorAll(".temp")).forEach(field => {
-        field.innerHTML = tempView.convertTempType(field.innerText, state.temperature.temptype) +`&deg;`;
-        
-    });
-
+    tempView.updateTemps(document.querySelectorAll(".temp"), state.temperature.temptype);
+   
 });
