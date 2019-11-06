@@ -53,10 +53,11 @@ const clearTextField = (field) => {
 
 };
 
-const setDate = (field) => {
+export const setDate = () => {
     // for now we will set the date to today's date
     let today = new Date();
-    field.textContent = `${today.getMonth()}/${today.getDate()}/${today.getFullYear()}`;
+    elements.date.value = `${today.getMonth()}/${today.getDate()}/${today.getFullYear()}`;
+    elements.date.disabled = true;
 
 }
 //validation for time fields(hours and minutes)
@@ -64,7 +65,7 @@ const validateTime = (field, value, type) => {
     let rangeMax = 0;
     //for hours range is 0-24 and for minutes range is 0-59
     (type === 'hours') ? rangeMax = 24 : rangeMax = 59;
-    
+
     //if its a valid input
     if ((field.value !== '') && (!isNaN(value)) && (value >= 0 && value <= rangeMax) && (Number.isInteger(value))) {
         if (field.classList.contains(errorClass)) {
@@ -135,7 +136,7 @@ export const validateForm = () => (validateTitle()
 
 
 //create the markup that will be inserted
-export const createEntry = (id, title, time,category) => {
+export const createEntry = (id, title, time, category) => {
     const markup =
         `<tr class="item" id=${id}>
         <td>${title}</td>
