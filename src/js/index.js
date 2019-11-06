@@ -198,3 +198,7 @@ elements.weatherChkBox.addEventListener('change', event => {
 
 });
 
+//make google chart responsive
+window.addEventListener('resize', () => {
+    chartView.renderPieChart(controlChart(state.entry.entries));
+});
