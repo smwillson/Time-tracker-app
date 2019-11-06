@@ -34,7 +34,7 @@ body {
 }
 
 section {
-    padding: 40px 0;
+    padding: 15px 0 20px 0;
     color: #212226;
 }
 
@@ -313,6 +313,15 @@ input[type=text]:focus {
     margin: 0;
     display: inline-block;
 }
+.general-icon{
+    padding: 10px 8px;
+    font-size: 34px; 
+}
+
+.general-icon span{
+    padding: 2px;
+    font-family: "Open Sans", "Arial", sans-serif;
+}
 
 .time-entry-icon i {
     font-size: 34px;
@@ -326,6 +335,7 @@ input[type=text]:focus {
 .entry-item {
     display: inline-block;
 }
+
 
 /*=====================================================
                     Table
@@ -363,15 +373,19 @@ input[type=text]:focus {
 
 
 /*=====================================================
-                    Pie Chart
+                    Pie Chart/ Report section
 ======================================================*/
-
-#piechart_3d{
-    width: 1200px;
-    height: 900px;
+.chart {
+    width: 100%; 
+    min-height: 650px;
+    max-height: 900px;
     margin-left: auto;
     margin-right: auto;
-}
+  }
+
+.chart-row {
+    margin:0 !important;
+  }
 
 #daily-report-section{
     display: none;
@@ -414,6 +428,8 @@ input[type=text]:focus {
 
 #weather-btn{
     color: #000;
+    border-radius: 18px;
+    text-transform: uppercase;
 }
 
 #weather{
