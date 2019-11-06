@@ -27,7 +27,7 @@ export default class Chart {
 
     //method to convert an array of object to an array of arrays for rendering the chart;
     objectToArray(objectArray) {
-        const header = ['Task', 'Hours per day'];
+        const header = ['Task', 'Minutes per day'];
 
         const arrayOfArrays = objectArray.map(elem => Object.values(elem));
         arrayOfArrays.unshift(header);
