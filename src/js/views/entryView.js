@@ -2,7 +2,7 @@ import {
     elements
 } from './common';
 
-const convertToHours = (hrs, mins) => hrs + (mins / 60);
+const convertToMinutes = (hrs, mins) => (hrs * 60) + mins;
 
 //getters
 
@@ -14,7 +14,7 @@ export const getDesc = () => elements.description.value;
 
 export const getCategory = () => elements.category.value;
 
-export const getTime = () => convertToHours(getHours(), getMinutes());
+export const getTime = () => convertToMinutes(getHours(), getMinutes());
 
 const getHours = () => getIntValue(getValue(elements.hours));
 
@@ -141,7 +141,7 @@ export const createEntry = (id, title, time, category) => {
         `<tr class="item" id=${id}>
         <td>${title}</td>
         <td>${category}</td>
-        <td>${time} hours</td>
+        <td>${time} minutes</td>
         <td><span><button class="table-btn-general entry-edit-btn"><i class="fas fa-pencil-alt" id="btn-edit-${id}"></i></button></span></td>
         <td><span><button class="table-btn-general entry-del-btn"><i class="far fa-trash-alt" id="btn-del-${id}"></i></button></span></td>
     </tr>`;
