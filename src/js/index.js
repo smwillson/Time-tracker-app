@@ -108,11 +108,13 @@ elements.table.addEventListener('click', event => {
     //remove the entry from the UI
     if (event.target.matches('.entry-del-btn , .entry-del-btn *')) {
         const rowNum = event.target.parentNode.parentNode.parentNode.parentNode.rowIndex;
+        
         elements.table.deleteRow(rowNum);
+
+        //now remove it from the state
+        state.entry.deleteEntry(elementID);
     }
 
-    //now remove it from the state
-    state.entry.deleteEntry(elementID);
 
     //if all the entries have been removed , then hide the piechart element
     if (!state.entry.entries.length > 0) {
