@@ -17,6 +17,6 @@ In order to run the application, navigate to the directory where the project was
 
 1. From inside the  directory, navigate to the dist folder and open the index.html file.
 
-2. Visit the site in your browser at http://localhost:8000
+2. Visit the site in your default browser.
 
 *Please note that in order for the app to be fully functional, internet is required.* 
