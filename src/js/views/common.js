@@ -1,3 +1,4 @@
+//all DOM entries
 export const elements = {
     form: document.querySelector('#time-entry-form'),
     title: document.querySelector('#time-entry-title'),

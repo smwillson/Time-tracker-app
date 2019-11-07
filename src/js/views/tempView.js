@@ -33,7 +33,7 @@ export const toggleCheckBox = (state) => {
 };
 
 //convert from C->F and vice versa
- const convertTempType = (temp, type) => {
+const convertTempType = (temp, type) => {
     let newTemp;
     if (type === 'F') {
         newTemp = (temp * 9 / 5) + 32;
@@ -57,6 +57,6 @@ export const clearTemp = () => {
 };
 
 //set box to checked
-export const setBoxChecked = (state) =>{
+export const setBoxChecked = (state) => {
     elements.weatherChkBox.checked = state;
 };

@@ -10,6 +10,7 @@ export default class Chart {
 
     }
     //method to group by all the chart data by the category
+    //eg 3 project 1 entries will be have their times summed up
     groupBy(data) {
         const result = [];
 
@@ -25,7 +26,7 @@ export default class Chart {
         return this.objectToArray(result);
     };
 
-    //method to convert an array of object to an array of arrays for rendering the chart;
+    //method to convert an array of object to an array of arrays for rendering the chart
     objectToArray(objectArray) {
         const header = ['Task', 'Minutes per day'];
 
