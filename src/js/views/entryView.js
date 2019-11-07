@@ -142,7 +142,7 @@ export const createEntry = (id, title, time, category) => {
         <td>${title}</td>
         <td>${category}</td>
         <td>${time} minutes</td>
-        <td><span><button class="table-btn-general entry-edit-btn"><i class="fas fa-pencil-alt" id="btn-edit-${id}"></i></button></span></td>
+        <td><span><button class="table-btn-general entry-edit-btn" disabled><i class="fas fa-pencil-alt" id="btn-edit-${id}"></i></button></span></td>
         <td><span><button class="table-btn-general entry-del-btn"><i class="far fa-trash-alt" id="btn-del-${id}"></i></button></span></td>
     </tr>`;
 
