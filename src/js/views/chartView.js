@@ -10,6 +10,7 @@ export const hidePieChart = () => {
   elements.reportSection.style.display = 'none';
 };
 
+//from google chart documentation
 export const renderPieChart = (tableData) => {
 
   google.charts.load("current", { packages: ["corechart"] });

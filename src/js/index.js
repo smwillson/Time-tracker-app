@@ -96,7 +96,7 @@ elements.submitBtn.addEventListener('click', event => {
 });
 
 //Event handlers for the cancel button
-elements.cancelBtn.addEventListener('click', event =>{
+elements.cancelBtn.addEventListener('click', event => {
     event.preventDefault();
     entryView.clearForm();
 });
