@@ -36,7 +36,7 @@ export const clearForm = () => {
 };
 
 //toggle link
-export const toggleLink = (state) =>{
+export const toggleReportLink = (state) => {
     elements.reportLink.disabled = state;
 }
 
@@ -50,12 +50,6 @@ const addErrorClass = (field) => {
 
 const removeErrorClass = (field) => {
     field.classList.remove(errorClass);
-
-};
-
-const clearTextField = (field) => {
-    //clear the text content of the given field
-    field.textContent = '';
 
 };
 
