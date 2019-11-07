@@ -19,4 +19,4 @@ In order to run the application, navigate to the directory where the project was
 
 2. Visit the site in your browser at http://localhost:8000
 
-*Please note that in order to operate a fully functional app, internet is required.* 
+*Please note that in order for the app to be fully functional, internet is required.* 
