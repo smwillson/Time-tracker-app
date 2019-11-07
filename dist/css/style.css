@@ -428,7 +428,7 @@ input[type=text]:focus {
 
 #weather-btn{
     color: #000;
-    border-radius: 18px;
+    border-radius: 8px;
     text-transform: uppercase;
 }
 

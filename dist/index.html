@@ -13,10 +13,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="vendor/css/bootstrap/bootstrap.css">
     <!-- Custom Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
     <!-- fontswesome -->
     <link rel="stylesheet" href="vendor/css/fonstawesome/css/all.min.css">
+    <!-- google charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -37,8 +40,8 @@
                 <img src="img/logo/time_tracker_logo.png" alt="Time Tracker Logo" id="logo">
                 <!-- Menu items -->
                 <ul class="header-main-nav">
-                    <li><a href="#main-time-entry-section">Enter time</a></li>
-                    <li><a href="#">View reports</a></li>
+                    <li id="form-link"><a href="#main-time-entry-section">Enter time</a></li>
+                    <li id="report-link"><a href="#daily-report-section">View reports</a></li>
                 </ul>
                 <div id="home-text-box" class="container-fluid">
                     <div class="row">
@@ -60,7 +63,45 @@
     <!--Main section-->
 
     <main>
-
+        <!--Weather section-->
+        <section id="daily-weather">
+            <div id="weather-icon"><i class="fas fa-temperature-high general-icon"></i><span>Today's weather</span>
+            </div>
+            <div id="weather">
+                <span>
+                    <label id="weather-lbl"><input type="checkbox" disabled="disabled" id="temptype" name="temptype"
+                            checked />&deg;C</label>
+                    <button type="button" class="btn-time-entry btn-general" id="weather-btn">Get Latest
+                        Weather</button>
+                </span>
+            </div>
+            <div class="container-fluid" id="main-weather-div">
+                <div class="row" id="todays-weather">
+                    <!--   <div class="col-md-6 weather shadow">
+                        <div id="weather-icon"><svg></svg></div>
+                        <label>CURRENTLY&nbsp;&nbsp;&nbsp;<strong id="current-temp">16&deg;</strong></label>
+                    </div>
+                    <div class="col-md-6 weather shadow">
+                        <div class="weather-display">
+                            <span>
+                                <label>LOW &nbsp;&nbsp;<strong id="min-temp">12&deg;</strong></label>
+                                <label>&nbsp;&nbsp;&nbsp;<i class="fas fa-caret-right"></i></label>
+                                <label>&nbsp;&nbsp;HIGH &nbsp;&nbsp;<strong id="max-temp">24&deg;</strong></label>
+                            </span>
+                            <div>
+                                <i class="fas fa-umbrella"></i>&nbsp;&nbsp;&nbsp;<span>PRECIPITATION&nbsp;
+                                    <strong id="precipitation">0%</strong></span>
+                            </div>
+                            <div>
+                                <i class="fas fa-wind"></i> &nbsp;&nbsp;&nbsp;<span>WIND SPEED&nbsp;
+                                    <strong id="wind-dir">SW</strong> at <strong id="wind-speed">10MPH</strong></span>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <!--Weather section ends-->
         <section id="main-time-entry-section">
             <!-- Icon for time entry -->
             <div class="container-fluid time-entry-icon">
@@ -75,24 +116,28 @@
                 <!-- Task title and date entry -->
                 <div class="form-row form-elements">
                     <div class="col-md-6 form-group">
-                        <label class="text-label" for="time-entry-title">Task<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
-                        <input class="form-control" type="text" id="time-entry-title" placeholder="Task title" required>
+                        <label class="text-label" for="time-entry-title">Task<span class="time-entry-required"><i
+                                    class="fas fa-asterisk"></i></span></label>
+                        <input class="form-control" type="text" id="time-entry-title" placeholder="Task title"
+                            maxlength="25" required>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label class="text-label" for="time-entry-date">Date<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
-                        <input class="form-control" type="date" id="time-entry-date" required>
+                        <label class="text-label" for="time-entry-date">Date<span class="time-entry-required"><i
+                                    class="fas fa-asterisk"></i></span></label>
+                        <input class="form-control" type="text" id="time-entry-date" placeholder="mm/dd/yyyy" required>
                     </div>
                 </div>
                 <!-- Task description and tags -->
                 <div class="form-row form-elements">
                     <div class="col-md-6 form-group">
                         <label class="text-label" for="time-entry-description">Description</label>
-                        <textarea class="form-control" id="time-entry-description" rows="4" cols="50" placeholder="A brief description of the task">
-                        </textarea>
+                        <textarea class="form-control" id="time-entry-description" rows="2" cols="50" wrap="physical"
+                            placeholder="A brief description of the task"></textarea>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label class="text-label" for="time-entry-tag">Pick Category<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
-                        <input class="form-control" list="projects" id="time-entry-tag" name="project-choice" />
+                        <label class="text-label" for="time-entry-tag">Pick Category<span class="time-entry-required"><i
+                                    class="fas fa-asterisk"></i></span></label>
+                        <input class="form-control" list="projects" id="time-entry-tag" name="projects" required />
                         <datalist id="projects">
                             <option value="Project 1">
                             <option value="Project 2">
@@ -106,21 +151,24 @@
                 <!-- Duration -->
                 <div class="form-row form-elements">
                     <div class="col-md-2 form-group">
-                        <label class="text-label" for="entry-hour-duration">Duration<span class="time-entry-required"><i class="fas fa-asterisk"></i></span></label>
-                        <input class="form-control" type="text" id="entry-hour-duration" placeholder="00" required>
-                        <label class="text-label" for="entry-hour-duration">hrs</label>
+                        <label class="text-label" for="time-entry-hour">Duration<span class="time-entry-required"><i
+                                    class="fas fa-asterisk"></i></span></label>
+                        <input class="form-control" type="text" id="time-entry-hour" placeholder="0-24" required>
+                        <label class="text-label" for="time-entry-hour">hrs</label>
                     </div>
                     <div class="col-md-2 form-group">
                         <label>&nbsp;</label>
-                        <input class="form-control" type="text" id="entry-min-duration" placeholder="00" required>
-                        <label class="text-label" for="entry-min-duration">mins</label>
+                        <input class="form-control" type="text" id="time-entry-mins" placeholder="0-59" required>
+                        <label class="text-label" for="time-entry-mins">mins</label>
                     </div>
                 </div>
                 <!-- Buttons-->
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary btn-lg btn-general btn-time-entry" id="btn-submit">Submit</button>
-                        <button id="cancel" class="btn btn-primary btn-lg btn-general btn-time-entry" id="btn-cancel">Cancel</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-general btn-time-entry"
+                            id="btn-submit">Submit</button>
+                        <button id="btn-cancel" class="btn btn-primary btn-lg btn-general btn-time-entry">Cancel
+                        </button>
                     </div>
                 </div>
             </form>
@@ -136,10 +184,10 @@
                 </div>
             </div>
             <!-- Enries Begin -->
-            <table class="table table-striped time-entries clearfix">
+            <table class="table table-striped time-entries clearfix" id="entry-table">
                 <caption>List of today's entries</caption>
-                <tbody>
-                  <!--  <tr class="item">
+                <tbody id="daily_item_entries">
+                    <!--  <tr class="item">
                         <td>Project 1</td>
                         <td>2.00</td>
                         <td><span><button class="table-btn-general entry-edit-btn"><i class="fas fa-pencil-alt"></i></button></span></td>
@@ -151,12 +199,20 @@
                         <td><span><button class="table-btn-general entry-edit-btn"><i class="fas fa-pencil-alt"></i></button></span></td>
                         <td><span><button class="table-btn-general entry-del-btn"><i class="far fa-trash-alt"></i></button></span></td>
                     </tr> -->
-
+                </tbody>
             </table>
         </section>
         <!-- Entry item list section ends -->
     </main> <!-- Main time entry section ends-->
-
+    <!--The report will load here-->
+    <section id="daily-report-section">
+        <i class="fas fa-chart-bar general-icon"></i><span>Daily Report</span>
+        <div class="chart-row">
+            <div class="col-md-12">
+                <div id="piechart_3d" class="chart"></div>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer>
         <div class="container-fluid">
@@ -167,7 +223,7 @@
             </div>
         </div>
     </footer>
-   
-<script type="text/javascript" src="js/bundle.js"></script><script type="text/javascript" src="js/bundle.js"></script></body>
 
-</html>
+    <!-- -->
+
+</html><script type="text/javascript" src="js/bundle.js"></script>
