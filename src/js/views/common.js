@@ -15,6 +15,7 @@ export const elements = {
     reportSection: document.querySelector('#daily-report-section'),
     temperature: document.querySelector('#todays-weather'),
     weatherButton: document.querySelector('#weather-btn'),
-    weatherChkBox: document.querySelector('#temptype')
+    weatherChkBox: document.querySelector('#temptype'),
+    reportLink: document.querySelector('#daily-report-section')
 };
 
