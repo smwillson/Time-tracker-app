@@ -64,8 +64,8 @@ export const setDate = () => {
 const validateTime = (field, value, type) => {
     let rangeMax = 0;
     //for hours range is 0-24 and for minutes range is 0-59
-    (type === 'hours') ? rangeMax = 24 : rangeMax = 59;
-
+    (type === 'hour') ? rangeMax = 24 : rangeMax = 59;
+    
     //if its a valid input
     if ((field.value !== '') && (!isNaN(value)) && (value >= 0 && value <= rangeMax) && (Number.isInteger(value))) {
         if (field.classList.contains(errorClass)) {
