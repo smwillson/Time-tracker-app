@@ -32,7 +32,13 @@ const errorClass = "error-entry";
 
 export const clearForm = () => {
     elements.form.reset();
+    setDate();
 };
+
+//toggle link
+export const toggleLink = (state) =>{
+    elements.reportLink.disabled = state;
+}
 
 // function to add the CSS error class
 
