@@ -21,6 +21,8 @@ $(window).on('load', function () {
     //set the date manually(for now)
     //TODO: add dynamic ability
     entryView.setDate();
+    //diasble the link to the report section
+    entryView.toggleReportLink(true);
 });
 
 
@@ -87,10 +89,16 @@ const controlEntry = () => {
  */
 
 //element handler for form submission
-elements.submitBtn.addEventListener('click', e => {
-    e.preventDefault();
+elements.submitBtn.addEventListener('click', event => {
+    event.preventDefault();
     controlEntry();
 
+});
+
+//Event handlers for the cancel button
+elements.cancelBtn.addEventListener('click', event =>{
+    event.preventDefault();
+    entryView.clearForm();
 });
 
 //Event handler for deletion
@@ -109,12 +117,15 @@ elements.table.addEventListener('click', event => {
     //if all the entries have been removed , then hide the piechart element
     if (!state.entry.entries.length > 0) {
         chartView.hidePieChart();
+        entryView.toggleReportLink(true);
     } else {
         //render the pie chart with the new values now
         chartView.renderPieChart(controlChart(state.entry.entries));
+        entryView.toggleReportLink(false);
     }
 
 });
+
 
 
 //window.e = state.Entry;
