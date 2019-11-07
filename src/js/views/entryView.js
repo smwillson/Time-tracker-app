@@ -28,11 +28,26 @@ const getIntValue = (value) => Number(value);
 
 const errorClass = "error-entry";
 
+//remove valiation errors from all the required fields
+
+const removeAllValidations = ()=>{
+  Array.from(elements.form.querySelectorAll('[required]')).forEach(field =>{
+        removeErrorClass(field);
+  })
+
+};
+
 //function to clear the form 
 
 export const clearForm = () => {
+   //reset the form
     elements.form.reset();
+
+    //set the date again
     setDate();
+
+    //remove any validation CSS
+    removeAllValidations();
 };
 
 //toggle link
